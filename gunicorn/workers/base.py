@@ -256,8 +256,11 @@ class Worker:
                 mesg = "'%s'" % str(exc)
                 status_int = 403
 
-            msg = "Invalid request from ip={ip}: {error}"
-            self.log.warning(msg.format(ip=addr[0], error=str(exc)))
+            self.log.warning(
+                "Invalid request from ip=%s: %s",
+                addr[0],
+                str(exc)
+            )
         else:
             if hasattr(req, "uri"):
                 self.log.exception("Error handling request %s", req.uri)
